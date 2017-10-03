@@ -37,12 +37,12 @@ class Car(object):
 
     def display_all(self):
 
-        print "Price: {}".format(self.price)
-        print "Speed: {}".format(self.speed)
-        print "Fuel: {}".format(self.fuel)
-        print "Mileage: {}".format(self.mileage)
-        print "Tax: {}".format(self.tax)
+        print "Price: "+str(self.price)
+        print "Speed: "+str(self.speed)+" mph"
+        print "Fuel: "+ self.fuel
+        print "Mileage: "+str(self.mileage)+" miles per galon"
+        print "Tax: "+str(self.tax)
 
         return self
 
-car1 = Car(12000,"260 km/h","full","15 mpg")
+car1 = Car(12000,260,"full",15)
