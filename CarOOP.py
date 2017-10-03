@@ -36,12 +36,13 @@ class Car(object):
         return tax
 
     def display_all(self):
-
+        print "================================================="
         print "Price: "+str(self.price)
         print "Speed: "+str(self.speed)+" mph"
         print "Fuel: "+ self.fuel
         print "Mileage: "+str(self.mileage)+" miles per galon"
         print "Tax: "+str(self.tax)
+        print "================================================="
 
         return self
 
