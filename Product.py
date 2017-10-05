@@ -37,7 +37,7 @@ class Product(object):
         self.brand = brand
         self.cost = cost
         self.status = "for sale"
-        self.display_info()
+        # self.display_info()
 
 
     def display_info(self):
@@ -88,7 +88,4 @@ class Product(object):
             return "Invalid Reason"
             return self
 
-
-macbook = Product(2000.00,"MacBook Pro", "22 lbs", "Apple", 1200.00)
-
-macbook.sell_product().add_tax(0.12).return_item('opened')
+        return self
