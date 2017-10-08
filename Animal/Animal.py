@@ -1,10 +1,7 @@
 class Animal(object):
-    def __init__(self, name, *health):
+    def __init__(self, name):
+        self.health = 100
         self.name = name
-        self.health = health
-
-
-
 
     def display_health(self):
         print "{}'s health is {}".format(self.name, self.health)
