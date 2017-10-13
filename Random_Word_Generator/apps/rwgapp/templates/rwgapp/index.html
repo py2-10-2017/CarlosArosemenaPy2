@@ -10,15 +10,16 @@
   </head>
   <body>
     <div class="container">
-      <h1>Random Word (attempt #)</h1>
+      <h1>Random Word (attempt #{{ counter }})</h1>
       <div class="row">
         <div class="alert alert-success" role="alert">
             <p>{{randomWord}}</p>
         </div>
       </div>
-      <form action="/generate" method="POST">
-        <input class="btn btn-primary" type="submit" value="Generate">
-      </form>
+
+        <a href="/generate"><input class="btn btn-primary" type="submit" value="Generate"></a>
+
+        <a href="/reset"><input class="btn btn-primary" type="submit" value="Reset"></a>
     </div>
   </body>
 </html>
