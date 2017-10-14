@@ -1,0 +1,33 @@
+.container{
+padding: 50px;
+border: 1px dotted blue;
+margin: 0px auto;
+
+
+}
+
+
+
+
+form, #resultform{
+width: 1000px;
+margin-left: 300px;
+
+
+}
+
+
+
+textarea.form-control {
+    height: auto;
+    width: 50%;
+}
+
+input.form-control {
+
+    width: 40%;
+}
+
+select.form-control{
+  width: 40%;
+}
