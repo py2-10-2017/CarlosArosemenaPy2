@@ -11,11 +11,12 @@
   <body>
     <div class="container">
       <h1>Thank you for your business!</h1>
-      <p>We charged your credit card for $19.99</p>
-      <p>You have ordered 19 items so far and spent</p>
-      <p>$249.99 with Amadon.com</p>
+      <p>We charged your credit card for {{charged}}</p>
+      <p>You have ordered {{ordered}} items so far and spent</p>
+      <p>${{totalcharge}} with Amadon.com</p>
 
       <a href="/"><button type="button" class="btn-primary" name="button">Go Back!</button></a>
+      <a href="/reset"><button type="button" class="btn-primary" name="button">Reset and Go Back!</button></a>
 
     </div>
   </body>
