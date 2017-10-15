@@ -1,0 +1,33 @@
+.btn {
+  margin-left: 20px;
+  width: 120px;
+}
+
+div.container{
+  margin: 0px auto;
+  width: 700px;
+}
+
+/*.table>thead>tr>th  {
+  width: 10%;
+}*/
+
+.table{
+  width: 2%;
+}
+
+th.actions, td.actions{
+  width: 10%;
+}
+
+th.price, td.price{
+  width: 15%;
+}
+
+th.item, td.item{
+  width: 15%;
+}
+/*
+.item, .price{
+  width: 5%;
+}*/
