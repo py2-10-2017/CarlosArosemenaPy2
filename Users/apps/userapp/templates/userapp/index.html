@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+  </head>
+  <body>
+    <div class="container">
+      <fieldset>
+
+
+      <h3>1. Know how to retrieve all users</h3>
+      <ul>
+        <li>import using: 'from apps.userapp.models import users'</li>
+        <li>use command 'users.objects.all()'</li>
+      </ul>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in allusers %}
+          <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.email_address}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.created_at}}</td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+      </fieldset>
+      <hr>
+      <h3>2. Know how to get the last user</h3>
+      <ul>
+        <li>import using: 'from apps.userapp.models import users'</li>
+        <li>use command 'users.objects.last()'</li>
+      </ul>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>{{lastuser.first_name}}</td>
+            <td>{{lastuser.last_name}}</td>
+            <td>{{lastuser.email_address}}</td>
+            <td>{{lastuser.age}}</td>
+            <td>{{lastuser.created_at}}</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+      <hr>
+      <h3>3. Create a few records in the users</h3>
+      <ul>
+        <li>import using: 'from apps.userapp.models import users'</li>
+        <li>check the fields: 'users.__doc__'</li>
+        <li>use command: 'users.objects.create(first_name="Carlos",last_name="Arosemena",email_address="ceag68@hotmail.com", age = 35)'</li>
+      </ul>
+      <h4>(optional) Ninja:
+          Find a way to validate the data coming in to the shell.
+          For example, make sure that "name" fields are a
+          minimum length, "email" is a valid email, or that "email" doesn't already exist in the db.</h4>
+
+      {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+
+      {% endif %}
+
+      <form action="create" method="post">
+        {% csrf_token %}
+        <label for="">First Name: <input type="text" name='first_name'></label>
+        <label for="">Last Name: <input type="text" name='last_name'></label>
+        <label for="">Email: <input type="text" name='email_address'></label>
+        <label for="">Age: <input type="text" name='age'></label>
+        <input type="submit" value="submit">
+
+      </form>
+
+      <hr>
+
+      <h3>4. Know how to get the first user</h3>
+      <ul>
+        <li>import using: 'from apps.userapp.models import users'</li>
+        <li>use command 'users.objects.last()'</li>
+      </ul>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+
+            <td>{{firstuser.first_name}}</td>
+            <td>{{firstuser.last_name}}</td>
+            <td>{{firstuser.email_address}}</td>
+            <td>{{firstuser.age}}</td>
+            <td>{{firstuser.created_at}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <hr>
+
+      <h3>5. Know how to get the users sorted by their first name (order by first_name DESC)</h3>
+      <ul>
+        <li>import using: 'from apps.userapp.models import users'</li>
+        <li>use command 'users.objects.order_by("-first_name")'</li>
+      </ul>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in allusersDESC %}
+          <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.email_address}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.created_at}}</td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+      <hr>
+      <h3>6. Get the record of the user whose id is 3 and UPDATE the person's last_name to something else.
+        Know how to do this directly in the console using .get and .save.</h3>
+        <ul>
+          <li>usertoUpdate = users.objects.get(id=3)</li>
+          <li>usertoUpdate.last_name = "Rino"</li>
+          <li>usertoUpdate.save()</li>
+        </ul>
+        <form action="update" method="POST">
+          {% csrf_token %}
+          <label>Specify ID to Update: <input type="number" name="updateid"></label>
+          <label>Change last name : <input type="text" name="updateLastname"></label>
+          <input type="submit" value="update">
+        </form>
+        <hr>
+
+        <h3>7. Know how to delete a record of a user whose id is 4
+          (use something like User.objects.get(id=2).delete...).</h3>
+          <ul>
+            <li>usertoDelete = users.objects.get(id=req.POST['deleteid'])</li>
+            <li>usertoDelete.delete()</li>
+          </ul>
+          <form action="delete" method="POST">
+            {% csrf_token %}
+            <label>Specify ID to Delete: <input type="number" name="deleteid"></label>
+            <input type="submit" value="delete">
+          </form>
+    </div>
+  </body>
+</html>
