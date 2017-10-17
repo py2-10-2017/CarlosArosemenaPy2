@@ -89,3 +89,27 @@ For the 3rd book, remove the first author
 >>> authorsbook31 = authorsbook3[0]
 >>> authorsbook31.delete()
 (4, {u'bookapp.Author_books': 3, u'bookapp.Author': 1})
+
+For the 2nd book, add the 5th author as one of the authors
+
+book2.authors.add(author5)
+
+
+Find all the books that the 3rd author is part of
+
+Author3Books = author3.books.all()
+>>> for auth3book in Author3Books:
+...     print auth3book.name
+...
+C sharp
+Java
+Python
+PHP
+>>>
+
+Find all the books that the 2nd author is part of
+
+
+>>> Author2Books = author2.books.all()
+>>> for auth2book in Author2Books:
+...    print auth2book.name
