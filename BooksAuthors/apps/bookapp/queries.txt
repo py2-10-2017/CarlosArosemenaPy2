@@ -1,0 +1,91 @@
+#
+#Create 5 books with the following names: C sharp, Java, Python, PHP, Ruby
+
+# Bookstore = [
+#     {"name":"C sharp", "desc":"code in c sharp"},
+#     {"name":"Java", "desc":"code in java"},
+#     {"name":"Python", "desc":"code in python"},
+#     {"name":"PHP", "desc":"code in PHP"},
+#     {"name":"Ruby", "desc":"code in Ruby"}
+# ]
+
+# for book in Bookstore:
+# ...  Book.objects.create(name=book['name'],desc=book['desc'])
+
+Create 5 different authors: Mike, Speros, John, Jadee, Jay
+
+
+# Authors = [
+#     {"first_name":"Mike","last_name":"Meyers"},
+#     {"first_name":"Speros","last_name":"Greek"},
+#     {"first_name":"John","last_name":"Wayne"},
+#     {"first_name":"Jadee","last_name":"Jade"},
+#     {"first_name":"Jay","last_name":"Blue"}
+#
+# ]
+
+# for author in Authors:
+# ...   Author.objects.create(first_name=author['first_name'],last_name=author['last_name'])
+
+Change the name of the 5th book to C#
+
+fifthBook = Book.objects.get(id=5)
+fifthBook.name = "C#"
+fifthBook.save()
+
+Change the first_name of the 5th author to Ketul
+
+fifthAuthor = Author.objects.get(id=5)
+>>> fifthAuthor.first_name = "Ketul"
+>>> fifthAuthor.save()
+
+Assign the first author to the first 2 books
+
+To make sure I always get the 1st two books:
+
+get all, order by ID explicitly
+
+Book = Book.objects.all().order_by("id")
+
+assign the 1st two positions
+
+>>> book2 = Book[1].id
+>>> book1 = Book[0].id
+
+then
+
+>>> author1 = Author.objects.get(id=1)
+>>> author1.books.add(book1)
+>>> author1.books.add(book2)
+
+Assign the second author to the first 3 books
+Authorsall = Author.objects.all()
+author2 = Authorsall[1]
+author2.books.add(book1,book2,book3)
+
+Assign the third author to the first 4 books
+author3 = Authorsall[2]
+author3.books.add(book1,book2,book3,book4)
+
+Assign the fourth author to the first 5 books (or in other words, all the books)
+author4 = Authorsall[3]
+author4.books.add(book1,book2,book3,book4,book5)
+
+For the 3rd book, retrieve all the authors
+
+book3.authors.all()
+Book3Authors = book3.authors.all()
+>>> for authorsin3 in Book3Authors:
+...    print authorsin3.first_name
+...
+Speros
+John
+Jadee
+>>>
+
+
+For the 3rd book, remove the first author
+> authorsbook3 = book3.authors.all()
+>>> authorsbook31 = authorsbook3[0]
+>>> authorsbook31.delete()
+(4, {u'bookapp.Author_books': 3, u'bookapp.Author': 1})
