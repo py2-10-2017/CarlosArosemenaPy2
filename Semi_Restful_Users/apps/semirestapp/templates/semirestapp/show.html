@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Semi_Restful_Users</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'semirestapp/css/style.css'%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+  </head>
+  <body>
+    <div class="container">
+      <h3>User {{usertoDisplay.id}}</h3>
+      <div id="showhtml">
+        <p>Full Name: {{usertoDisplay.first_name}} {{usertoDisplay.last_name}} </p>
+        <p>Email: {{usertoDisplay.email_address}}</p>
+        <p>Created At: {{usertoDisplay.created_at}}</p>
+        <a href="/users/1/edit">Edit</a> | <a href="">Delete</a> | <a href="/">Back to List</a>
+      </div>
+    </div>
+    </body>
+  </html>
