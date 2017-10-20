@@ -1,0 +1,33 @@
+
+h3{
+  margin-left: 130px;
+}
+
+form{
+
+  width: 700px;
+  margin-bottom: 50px;
+  margin-left: 130px;
+}
+
+.table.table-striped.table-hover{
+  width: 900px;
+  margin: 0px auto;
+}
+
+.row h3{
+  margin-left: 135px;
+}
+
+button.btn.btn-success{
+  margin-left: 650px;
+}
+
+div#destroy.row{
+
+  text-align: center;
+}
+
+div#destroy.row h1, p {
+  margin-bottom: 40px;
+}
