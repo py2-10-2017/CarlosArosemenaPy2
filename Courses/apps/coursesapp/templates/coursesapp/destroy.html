@@ -12,11 +12,11 @@
     <div class="container">
       <div class="row" id="destroy">
       <h1>Are you sure you want to delete the following course?</h1>
-      <p>Name: </p>
-      <p>Description: </p>
+      <p>Name: {{coursetoDelete.name}} </p>
+      <p>Description: {{coursetoDelete.description.description}}</p>
 
       <a href="/"><button type="button" class="btn btn-primary" name="button">No, Back to index</button></a>
-      <button type="button" class="btn btn-danger" name="button">Yes! I want to delete this</button>
+      <a href="/confirm/delete/{{coursetoDelete.id}}"><button type="button" class="btn btn-danger" name="button">Yes! I want to delete this</button></a>
       </div>
     </div>
   </body>

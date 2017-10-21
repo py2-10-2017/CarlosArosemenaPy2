@@ -31,3 +31,9 @@ div#destroy.row{
 div#destroy.row h1, p {
   margin-bottom: 40px;
 }
+
+div.alert.alert-danger{
+  width: 600px;
+  text-align: center;
+  margin-left: 130px;
+}

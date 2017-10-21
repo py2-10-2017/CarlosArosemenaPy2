@@ -11,7 +11,15 @@
   <body>
     <div class="container">
       <h3>Add a new course</h3>
-      <form>
+      {% if messages %}
+      <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+          <p>{{message}}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <form action="add" method="POST">
+        {% csrf_token %}
         <div class="form-group">
           <label>Name</label>
           <input type="text" class="form-control" name="course_name">
@@ -35,12 +43,14 @@
             </tr>
           </thead>
           <tbody>
+            {% for course in courses %}
             <tr>
-              <td>Sample</td>
-              <td>Sample</td>
-              <td>Sample</td>
-              <td><a href="delete">Sample</a></td>
+              <td>{{course.name}}</td>
+              <td>{{course.description.description}}</td>
+              <td>{{course.created_at}}</td>
+              <td><a href="delete/{{course.id}}">delete</a></td>
             </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
