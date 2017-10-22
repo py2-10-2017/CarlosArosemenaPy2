@@ -15,7 +15,7 @@ class UserManager(models.Manager):
         except ValidationError:
             errors['reg_email'] = "Invalid Email"
 
-    
+
 
         checkEmail = users.objects.filter(email_address=postData["reg_email"])
 
@@ -36,9 +36,6 @@ class UserManager(models.Manager):
             errors['reg_password'] = "Passwords do not match"
 
         return errors
-
-
-
 
 
 class users(models.Model):

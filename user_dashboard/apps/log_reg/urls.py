@@ -6,5 +6,7 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'^register$', views.register),
     url(r'^register/submit$', views.submit_registration),
-    url(r'^register/success$', views.success_registration)
+    url(r'^register/success$', views.success_registration),
+    url(r'^login$', views.render_login),
+    url(r'^login/submit$', views.login)
 ]

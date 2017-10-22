@@ -8,4 +8,10 @@ input.form-control.registration_page{
 
 button.btn.btn-success.registration_page{
   margin-left: 525px;
+
+}
+
+div.alert.alert-danger{
+  text-align: left;
+  width: 700px;
 }
