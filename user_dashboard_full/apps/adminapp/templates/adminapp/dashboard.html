@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends "../log_reg/base.html"%}
+  {% block body_block %}
+
+  <h1>Manage Users</h1>
+  {% if role == 9 %}
+  <a href="/users/new"><button class="btn btn-primary" style="margin-left:1000px;margin-bottom:30px;">Add new user</button></a>
+  {% endif %}
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>email</th>
+        <th>Created At</th>
+        <th>User Level</th>
+
+        {% if role == 9 %}
+        <th>Actions</th>
+        {% endif %}
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.first_name}} {{user.last_name}}</td>
+        <td>{{user.email_address}}</td>
+        <td>{{user.created_at}}</td>
+        {% if user.user_role == 9%}
+        <td>Admin</td>
+        {% else %}
+        <td>User</td>
+        {% endif %}
+
+        {% if role == 9 %}
+        <td>
+          <a style="margin-right:10px;" href="">edit</a>
+          <a href="">remove</a>
+        </td>
+        {% endif %}
+
+      </tr>
+      {% endfor %}
+    </tbody>
+
+  </table>
+
+
+  {% endblock %}
