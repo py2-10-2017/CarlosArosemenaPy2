@@ -16,8 +16,11 @@
           <li><a href="/">Home</a></li>
 
           {% if user_in_session %}
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/users/edit">Profile</a></li>
+
+          <li><a href="" style="margin-left:400px;">user in session: {{user_in_session}}</a></li>
           <li><a href="/logout">Logout</a></li>
-          <li><a href="" style="margin-left:500px;">user in session: {{user_in_session}}</a></li>
           {% else %}
           <li><a href="/register">Sign Up</a></li>
           {% endif %}

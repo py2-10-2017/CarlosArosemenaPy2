@@ -15,3 +15,7 @@ div.alert.alert-danger{
   text-align: left;
   width: 700px;
 }
+
+textarea.form-control{
+  width: 600px;
+}

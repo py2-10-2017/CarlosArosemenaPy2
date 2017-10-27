@@ -22,7 +22,6 @@ def submit_registration(req):
     else:
 
         hashedPassword = bcrypt.hashpw(req.POST['reg_password'].encode(), bcrypt.gensalt())
-        #Make first user admin
 
         checkUserAdmin = users.objects.all()
         role = 0
@@ -52,22 +51,19 @@ def render_login(req):
 def login(req):
     errors = {}
     checkUserEmail = users.objects.filter(email_address = req.POST['log_email'])
-    # hashedPasswordCheck = bcrypt.hashpw(req.POST['log_password'].encode(), bcrypt.gensalt())
-
 
     if not checkUserEmail:
         errors['login error'] = "invalid username/password"
     else:
         for user in checkUserEmail:
-            # passwordinDB = bcrypt.hashpw(user.password.encode(), bcrypt.gensalt())
-            # print passwordinDB
-            # print hashedPasswordCheck
+
             if  bcrypt.checkpw(req.POST['log_password'].encode(), user.password.encode()):
                 req.session['email_address']= user.email_address
                 req.session['first_name'] = user.first_name
                 req.session['last_name'] =user.last_name
-                req.session['what'] = 'logged in'
+                req.session['edit_id'] = user.id
                 req.session['user'] = user.user_role
+
                 if req.session['user'] == 9:
                     return HttpResponseRedirect(reverse("dashboardadmin"))
                 else:
@@ -76,15 +72,11 @@ def login(req):
             else:
                 errors['login error'] = "invalid username/password"
 
-
     if errors:
         print errors
         for tag, error in errors.iteritems():
             messages.error(req,error, extra_tags=tag)
         return redirect('/login')
-
-
-
 
 
 def success_registration(req):
@@ -105,8 +97,8 @@ def log_out(req):
     del req.session['email_address']
     del req.session['first_name']
     del req.session['last_name']
-    del req.session['what']
     del req.session['user']
+    del req.session['edit_id']
 
     return redirect('/')
 
