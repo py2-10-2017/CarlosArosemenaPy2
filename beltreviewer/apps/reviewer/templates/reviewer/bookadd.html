@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends "reviewer/reviewerbase.html"%}
+{% block body_block %}
+
+<h3>Add a new Book Title and a Review</h3>
+{% if messages %}
+<div class="alert alert-danger" role="alert">
+  {% for message in messages %}
+  <ul>
+    <li>{{message}}</li>
+  </ul>
+  {% endfor %}
+</div>
+{% endif %}
+
+<form action="/books/post/{{user_id}}" method="POST">
+  {% csrf_token %}
+
+  <div class="form-group">
+    <label>Book Title</label>
+    <input type="text" class="form-control" name="book_title">
+  </div>
+
+  <div class="form-group">
+    <label>Choose an Author from the list</label>
+    <select class="form-control" name="existing_author">
+      <option selected value='none'>--</option>
+      {% for author in authors%}
+      <option value="{{author.author_name}}">{{author.author_name}}</option>
+      {% endfor %}
+
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Or add a new author</label>
+    <input type="text" class="form-control" name="new_author">
+  </div>
+
+  <div class="form-group">
+    <label>Review</label>
+    <textarea class="form-control" name='review' rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Rating</label>
+    <select class="form-control" name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" name="button">Add Book and Review</button>
+</form>
+
+{% endblock %}

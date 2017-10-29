@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends "reviewer/reviewerbase.html"%}
+{% block body_block %}
+
+
+
+<div class="col-xs-6">
+  <h3>Recent Book Reviews:</h3>
+  {% for review in recent %}
+
+  <a href="/books/{{review.book.id}}"><h4>{{review.book.title}}</h4></a>
+  <p>Rating:
+    {% if review.rating == 1%}
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    {%elif review.rating == 2%}
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    {%elif review.rating == 3%}
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    {%elif review.rating == 4%}
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    {%elif review.rating == 5%}
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    <i class="fa fa-star-o fa-stack-5x" style="color:#ffe400;" aria-hidden="true"></i>
+    {% else %}
+    <span>No Reviews for this title</span>
+
+    {% endif %}
+
+  </p>
+  <p><a href="/users/{{review.reviewer.id}}">{{review.reviewer.first_name}} {{review.reviewer.last_name}}</a> says: {{review.review}} </p>
+  <p>Posted on {{review.created_at}}</p>
+  <hr>
+  {% endfor %}
+</div>
+
+<div class="col-xs-6">
+  <h3>Other Books with Reviews: </h3>
+  <ul id="booklist">
+    {% for book in old%}
+    <a href="/books/{{book.id}}"><li style="list-style:none;">{{book.title}}</li></a>
+    {% endfor %}
+  </ul>
+</div>
+
+
+
+{% endblock %}
